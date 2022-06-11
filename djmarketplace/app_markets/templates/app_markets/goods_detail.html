@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block head %}
+    {{ head }}
+{% endblock head %}
+
+{% block left_bar %}
+    <ul>
+        <li>
+            <a href="#"> {% trans 'Market list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'goods_list' %}"> {% trans 'Goods list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'report_list' %}"> {% trans 'report' %} </a>
+        </li>
+
+    </ul>
+{% endblock left_bar %}
+
+{% block center_bar %}
+    <ul>
+        <li> {% trans 'code' %} - {{ object.code }} </li>
+        <li> {% trans 'name' %} - {{ object.goods.name }} </li>
+        <li> {% trans 'price' %} - {{ object.price }} </li>
+        <li> {% trans 'quantity' %} - {{ object.quantity }} </li>
+        <li> {% trans 'Shop' %} - {{ object.market }} </li>
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> {% trans 'Add to cart' %} </button>
+    </form>
+{% endblock center_bar%}
+
+{% block user_bar %}
+    <p><a href="{% url 'cart' %}"> {% trans 'Cart' %} </a></p>
+    <p> Общая стоимость</p>
+    <p> {{ request.user.cart.total_cost }}</p>
+    <p> Количество видов товара </p>
+    <p>{{ request.user.cart.item_cart.all.count }}</p>
+    <p>{{ request.user.username }}
+{% endblock user_bar%}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block head %}
+    {{ head }}
+{% endblock head %}
+
+{% block left_bar %}
+    <ul>
+        <li>
+            <a href="#"> {% trans 'Market list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'goods_list' %}"> {% trans 'Goods list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'report_list' %}"> {% trans 'report' %} </a>
+        </li>
+    </ul>
+{% endblock left_bar %}
+
+
+
+{% block center_bar %}
+    <div class="cart-block">
+        <h3> {% trans 'Enter time period' %} </h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"> Нажать </button>
+        </form>
+
+        <ul>
+            {% for obj in object_list %}
+                <li>
+                    {{ obj.id }} -- {{ obj.name }}-- {{ obj.total_quantity }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock center_bar%}
+
+

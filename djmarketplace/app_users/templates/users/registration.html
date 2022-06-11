@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block head %}
+    {{ head }}
+{% endblock head %}
+
+{% block left_bar %}
+    <ul>
+        <li>
+            <a href="#"> {% trans 'Market list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'goods_list' %}"> {% trans 'Goods list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'report_list' %}"> {% trans 'report' %} </a>
+        </li>
+    </ul>
+{% endblock left_bar %}
+
+{% block center_bar %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> {% trans 'Sign up' %} </button>
+    </form>
+{% endblock center_bar %}

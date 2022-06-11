@@ -1,0 +1,54 @@
+* {box-sizing: border-box}
+
+body {background-color: bisque}
+
+.container {
+    max-width: 1500px
+}
+
+.navbar {
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding: 10px 10px;
+    background-color: deepskyblue;
+}
+
+.navbar a {
+    margin-left: 20px;
+}
+
+.left-col {
+    margin 0 5px 5px 5px;
+    min-height: 500px;
+    min-width: 20%;
+    display: inline-block;
+    background-color: deepskyblue;
+    vertical-align: top;
+}
+
+.center-col {
+    min-height: 500px;
+    max-width: 900px;
+    min-width: 60%;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    background-color: khaki;
+    vertical-align: top;
+}
+
+.user-bar {
+    min-height: 300px;
+    min-width: 18%;
+    display: inline-block;
+    background-color: deepskyblue;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.foot-bar {
+    margin-top: 10px;
+    min-height: 30px;
+    min-width: 100%;
+    background-color: deepskyblue;
+    display: inline-block;
+}

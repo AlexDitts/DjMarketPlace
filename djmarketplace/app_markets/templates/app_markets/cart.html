@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block head %}
+    {{ head }}
+{% endblock head %}
+
+{% block left_bar %}
+    <ul>
+        <li>
+            <a href="#"> {% trans 'Market list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'goods_list' %}"> {% trans 'Goods list' %} </a>
+        </li>
+
+        <li>
+            <a href="{% url 'report_list' %}"> {% trans 'report' %} </a>
+        </li>
+
+    </ul>
+{% endblock left_bar %}
+
+
+
+{% block center_bar %}
+    <div class="cart-block">
+
+        {% for obj in object_list %}
+            <ul>
+                <li>
+                    <a href="{% url 'goods_detail' obj.pk %}">  {{ obj.item_goods.goods.name }}</a>
+                </li>
+                <li>
+                    {% trans 'code' %} - {{ obj.item_goods.code }}
+                </li>
+                <li>
+                    {% trans 'price/unit' %} - {{ obj.item_goods.price }}
+                </li>
+                <li>
+                    {% trans 'quantity' %} - {{ obj.quantity }}
+                </li>
+                <li>
+                    {% trans 'market' %} - {{ obj.item_goods.market.title }}
+                </li>
+            </ul>
+        {% endfor %}
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit"> {% trans 'pay for goods' %} </button>
+        </form>
+
+    </div>
+{% endblock center_bar%}
+
+{% block user_bar %}
+    <ul>
+        <li>{{ user.username }}</li>
+        <li> {{ user.first_name }}</li>
+    </ul>
+
+{% endblock user_bar%}

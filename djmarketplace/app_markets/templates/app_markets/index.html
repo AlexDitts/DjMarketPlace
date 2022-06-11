@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block head %}
+    {{ head }}
+{% endblock head %}
+
+
+{% block left_bar %}
+    <ul>
+        <li>
+            <a href="#"> {% trans 'Market list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'goods_list' %}"> {% trans 'Goods list' %} </a>
+        </li>
+        <li>
+            <a href="{% url 'report_list' %}"> {% trans 'report' %} </a>
+        </li>
+
+    </ul>
+{% endblock left_bar %}
+
+{% block center_bar %}
+
+{% endblock center_bar %}
+
+{% block user_bar %}
+        {% if request.user.id %}
+        <li>
+            <a href="{% url 'account' request.user.pk %}"> {% trans 'Account' %}</a>
+        </li>
+        <li>
+            <a href="{% url 'logout' %}">{% trans 'Log out' %}</a>
+        </li>
+    {% else %}
+        <li>
+            <a href="{% url 'login' %}">{% trans 'Log in' %}</a>
+        </li>
+        <li>
+            <a href="{% url 'registration' %}"> {% trans 'Sign up' %} </a>
+        </li>
+    {% endif %}
+{% endblock user_bar %}
